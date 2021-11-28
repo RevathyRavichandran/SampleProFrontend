@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-lg-11">
+    <h2 mat-dialog-title *ngIf="data === 'xlsx'; else fail">Upload Excel</h2>
+    <ng-template #fail>
+      <h2 mat-dialog-title>Upload Image</h2>
+    </ng-template>
+  </div>
+  <div class="col-lg-1">
+    <button
+      mat-button
+      class="close-icon pull-right"
+      mat-dialog-close
+      style="background-color: white"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<hr />
+<form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-group" *ngIf="data === 'xlsx'; else faildata">
+        <button mat-stroked-button type="button" (click)="filePicker.click()">
+          Upload Excel
+        </button>
+        <input
+          type="file"
+          accept=".xlsx, .xls"
+          #filePicker
+          multiple
+          (change)="onFilePicked($event)"
+          required
+          formControlName="uri"
+        />
+        <div
+          *ngIf="uri.invalid && (uri.dirty || uri.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="uri.errors.required">
+            Please upload excel file to proceed.
+          </div>
+        </div>
+      </div>
+      <ng-template #faildata>
+        <div class="form-group">
+          <button mat-stroked-button type="button" (click)="filePicker.click()">
+            Upload Image
+          </button>
+          <input
+            type="file"
+            accept="image/*"
+            #filePicker
+            multiple
+            (change)="onFilePicked($event)"
+            required
+            formControlName="uri"
+          />
+          <div
+            *ngIf="uri.invalid && (uri.dirty || uri.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="uri.errors.required">
+              Please upload image file to proceed.
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <br />
+      <button
+        mat-button
+        type="submit"
+        [disabled]="newForm.invalid"
+        style="background-color: #242437; color: white"
+      >
+        Submit
+      </button>
+    </div>
+    <div class="col-lg-6"></div>
+  </div>
+</form>

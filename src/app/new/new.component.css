@@ -1,0 +1,8 @@
+input[type="file"] {
+  visibility: hidden;
+}
+
+.snackbar-style {
+  background-color: red !important;
+  color: white !important;
+}
