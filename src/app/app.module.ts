@@ -16,6 +16,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SocketComponent } from './socket/socket.component';
+import { SocketService } from './socket.service';
+import { WebsocketComponent } from './websocket/websocket.component';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ListComponent,
     NewComponent,
     ConfirmationComponent,
+    SocketComponent,
+    WebsocketComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +43,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HttpClientModule,
     FormsModule,
     MatSnackBarModule,
+    CookieModule.forRoot(),
   ],
-  providers: [AppService],
+  providers: [
+    AppService,
+    SocketService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AppService {
-  dburl = 'http://localhost:8080/api/';
+  dburl = '/api/';
 
   public listXls(): Observable<any> {
     return this.http.get<any>(this.dburl + 'xls/list');

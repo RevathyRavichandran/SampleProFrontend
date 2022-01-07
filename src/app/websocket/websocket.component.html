@@ -1,0 +1,24 @@
+<h1>WebSocket Client</h1>
+<table>
+  <tr>
+    <td></td>
+    <td>
+      <label>RequestID:</label>&nbsp;<input type="text" [(ngModel)]="requestid" />&nbsp;&nbsp;
+      <button (click)="onConnectClick()">Connect</button>&nbsp;&nbsp;
+      <button (click)="onDisconnectClick()" [disabled]="disabled">Disconnect</button>&nbsp;&nbsp;
+    </td>
+  </tr>
+</table><br/>
+<table>
+  <tr>
+    <td width="200px">Message</td>
+    <td><input type="text" [(ngModel)]="message"/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <button (click)="onSendClick()" [disabled]="disabled">Send Message</button>&nbsp;&nbsp;
+    </td>
+  </tr>
+</table><br/>
+<textarea [(ngModel)]="area" rows="30" cols="40" [disabled]="disabled"></textarea>
